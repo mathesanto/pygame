@@ -29,6 +29,14 @@ while rodando:
     if teclas[pygame.K_UP]: y -= velocidade
     if teclas[pygame.K_DOWN]: y += velocidade
 
+    # Cria retângulos para detectar colisão
+    ret_jogador = pygame.Rect(x, y, 40, 40)
+    ret_adversario = pygame.Rect(adversario_x, adversario_y, 40, 40)
+
+    # Verifica se colidiram
+    if ret_jogador.colliderect(ret_adversario):
+        print("Colidiu!")
+
     tela.fill((0, 0, 0))
     pygame.draw.rect(tela, (0, 255, 0), (x, y, 40, 40))
     pygame.draw.rect(tela, (255, 0, 0), (adversario_x, adversario_y, 40, 40))  # Adversário (vermelho)
